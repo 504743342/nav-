@@ -1,3 +1,4 @@
+/* 通用样式 */
 * {
     margin: 0;
     padding: 0;
@@ -24,7 +25,10 @@ body {
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
+    cursor: pointer;
  }
+
+ /* 页面布局 */
 #page {
     display: grid;
     gap: 60px 0;
@@ -33,6 +37,32 @@ body {
     margin: 0 auto;
     padding: 20px;
 }
+
+/* 编辑导航栏图标模块 */
+#setting {
+    position: fixed;
+    left: 30px;
+    top: 30px;
+    color: #fff;
+}
+body.preview .icon-back {
+    display: none;
+}
+body.preview .icon-setting {
+    display: block;
+}
+body.setting .icon-back {
+    display: block;
+}
+body.setting .icon-setting {
+    display: none;
+}
+#setting .icon {
+    width: 30px;
+    height: 30px;
+}
+
+/* 搜索模块 */
  #search { 
     padding-top: 60px;
     grid-area: 1/2/2/3;
@@ -76,6 +106,7 @@ body {
     right: 10px;
 }
 
+/* 网页模块 */
 #websites {
     grid-area: 2/2/3/3;
 }
@@ -86,6 +117,29 @@ body {
     color: #fff;
     font-size: 32px;
 }
+#websites .icon-del,
+#websites .icon-edit,
+.classify .icon-add {
+    display: none;
+}
+
+.icon-remove {
+    position: absolute;
+    right: -11px;
+    top: -9px;
+    width: 24px;
+    height: 24px;
+    display: none;
+}
+
+body.setting #websites .icon-del,
+body.setting #websites .icon-edit,
+body.setting .classify .icon-add {
+    display: inline-block;
+}
+body.setting .icon-remove {
+    display: block;
+}
 #websites .classify {
     margin-top: 10px;
     display: flex;
@@ -94,8 +148,10 @@ body {
     box-shadow: 0 0 16px 0 rgba(0, 0, 0, .4);
     border-radius: 4px;
 }
-#websites .classify li {
-    margin: 9px;
+#websites .tag {
+    position: relative;
+    margin: 4px 8px;
+    padding: 4px 16px;
     border-radius: 6px;
     background-color: pink;
 }
@@ -111,4 +167,56 @@ body {
 #websites .classify li a {
     display: inline-block;
     padding: 4px 30px;
+}
+
+/* 新增模块模板 */
+.plus {
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+body.setting .plus {
+    display: flex;
+}
+
+body.preview .plus {
+    display: none;
+}
+
+.plus .icon {
+    width: 60px;
+    height: 60px;
+    color: #fff;
+}
+
+.modal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -100vh);
+    width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: all .3s;
+}
+.modal.show {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+.modal .field {
+    margin: 10px 0;
+}
+.modal .field input {
+    line-height: 20px;
+    width: 100%;
+}
+.button {
+    background: #eee;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    cursor: pointer;
 }
